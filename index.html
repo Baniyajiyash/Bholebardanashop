@@ -1,738 +1,332 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bhole Bardana Shop — Farrukhabad</title>
-<style>
-  :root{
-    --jute:#b98247;
-    --jute-dark:#8a5f31;
-    --sack:#e7cfa1;
-    --sack-light:#f6ecd9;
-    --ink:#2c2013;
-    --ink-soft:#5a4630;
-    --green:#4c6b3f;
-    --terracotta-red:#a83c2b;
-    --thread:#c94f4f;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-    background:var(--sack-light);
-    color:var(--ink);
-    overflow-x:hidden;
-  }
-  h1,h2,h3,.display{
-    font-family:Georgia,'Times New Roman',serif;
-    font-weight:700;
-    letter-spacing:0.01em;
-  }
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+Create a SINGLE FILE (index.html) website using only HTML, CSS and JavaScript.
 
-  /* woven texture strip used as dividers */
-  .weave{
-    height:14px;
-    background:repeating-linear-gradient(45deg,var(--jute) 0 6px, var(--jute-dark) 6px 12px);
-  }
+Website Name:
+Bhole Bardana Shop
 
-  /* ---------- header ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(246,236,217,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:3px solid var(--jute);
-  }
-  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1140px;margin:0 auto;}
-  .brand{display:flex;align-items:center;gap:12px;}
-  .brand .mark{
-    width:42px;height:42px;border-radius:50%;
-    background:var(--jute);display:flex;align-items:center;justify-content:center;
-    color:#fff;font-size:20px;font-weight:900;font-family:Georgia,serif;
-    box-shadow:0 0 0 3px var(--sack);
-  }
-  .brand .names{line-height:1.15;}
-  .brand .names .en{font-size:19px;font-weight:800;}
-  .brand .names .hi{font-size:13px;color:var(--ink-soft);}
-  nav ul{display:flex;gap:28px;list-style:none;}
-  nav ul a{font-size:14px;font-weight:600;color:var(--ink-soft);position:relative;padding-bottom:3px;}
-  nav ul a::after{
-    content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--thread);
-    transition:width .25s ease;
-  }
-  nav ul a:hover::after{width:100%;}
-  .nav-toggle{display:none;background:none;border:none;font-size:26px;cursor:pointer;color:var(--ink);}
+Owner:
+Shiv Kumar Gupta
 
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    padding:90px 24px 70px;
-    text-align:center;
-    overflow:hidden;
-    background:
-      radial-gradient(ellipse at 20% -10%, rgba(185,130,71,0.25), transparent 55%),
-      radial-gradient(ellipse at 85% 0%, rgba(76,107,63,0.18), transparent 50%),
-      var(--sack-light);
-  }
-  .hero .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:12.5px;letter-spacing:0.18em;text-transform:uppercase;
-    color:var(--jute-dark);font-weight:700;margin-bottom:18px;
-    opacity:0;animation:riseIn .7s ease forwards;
-  }
-  .hero .eyebrow::before,.hero .eyebrow::after{content:'';width:26px;height:1px;background:var(--jute-dark);}
-  .hero h1{
-    font-size:clamp(38px,6vw,68px);
-    line-height:1.05;color:var(--ink);
-    opacity:0;animation:riseIn .8s ease .12s forwards;
-  }
-  .hero h1 span{color:var(--terracotta-red);font-style:italic;}
-  .hero p.lede{
-    max-width:560px;margin:20px auto 0;
-    font-size:17px;color:var(--ink-soft);line-height:1.6;
-    opacity:0;animation:riseIn .8s ease .24s forwards;
-  }
-  .hero .cta-row{
-    display:flex;gap:14px;justify-content:center;margin-top:32px;flex-wrap:wrap;
-    opacity:0;animation:riseIn .8s ease .36s forwards;
-  }
-  .btn{
-    padding:14px 28px;border-radius:3px;font-weight:700;font-size:14.5px;
-    letter-spacing:0.02em;cursor:pointer;border:2px solid var(--ink);
-    transition:transform .18s ease, box-shadow .18s ease;
-    display:inline-flex;align-items:center;gap:8px;
-  }
-  .btn-solid{background:var(--terracotta-red);border-color:var(--terracotta-red);color:#fff;}
-  .btn-solid:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(168,60,43,0.3);}
-  .btn-outline{background:transparent;color:var(--ink);}
-  .btn-outline:hover{transform:translateY(-3px);background:var(--ink);color:var(--sack-light);}
+Theme:
+Luxury Industrial + Modern 3D Design
 
-  .hero .status{
-    margin-top:26px;font-size:13px;color:var(--green);font-weight:700;
-    display:flex;align-items:center;justify-content:center;gap:8px;
-    opacity:0;animation:riseIn .8s ease .48s forwards;
-  }
-  .hero .status .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite;}
+Location:
+Farrukhabad, Uttar Pradesh, India
 
-  @keyframes riseIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(76,107,63,0.5);}70%{opacity:0.6;box-shadow:0 0 0 6px rgba(76,107,63,0);}}
+IMPORTANT:
+• Everything must be inside ONE HTML file.
+• Internal CSS and JavaScript only.
+• No frameworks.
+• Fully responsive.
+• Extremely smooth animations.
+• Premium UI.
+• Fast loading.
+• Professional code.
 
-  /* hanging sample tags animation under hero */
-  .tagline-strip{
-    display:flex;justify-content:center;gap:38px;margin-top:56px;flex-wrap:wrap;
-  }
-  .hang-tag{
-    display:flex;flex-direction:column;align-items:center;
-    opacity:0;animation:swingIn .8s ease forwards;
-  }
-  .hang-tag:nth-child(1){animation-delay:.55s;}
-  .hang-tag:nth-child(2){animation-delay:.68s;}
-  .hang-tag:nth-child(3){animation-delay:.81s;}
-  .hang-tag:nth-child(4){animation-delay:.94s;}
-  .hang-tag .string{width:1px;height:22px;background:var(--ink-soft);}
-  .hang-tag .card{
-    background:var(--sack);border:1.5px solid var(--jute-dark);border-radius:5px;
-    padding:10px 16px;font-size:13px;font-weight:700;color:var(--ink);
-    box-shadow:2px 3px 0 rgba(0,0,0,0.08);
-    transform-origin:top center;
-    animation:sway 3.4s ease-in-out infinite;
-  }
-  .hang-tag:nth-child(2n) .card{animation-delay:.4s;}
-  @keyframes swingIn{from{opacity:0;transform:translateY(-14px) rotate(-8deg);}to{opacity:1;transform:translateY(0) rotate(0);}}
-  @keyframes sway{0%,100%{transform:rotate(-2.5deg);}50%{transform:rotate(2.5deg);}}
+=================================
+DESIGN REQUIREMENTS
+=================================
 
-  /* ---------- reveal on scroll ---------- */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
-  .reveal.visible{opacity:1;transform:translateY(0);}
+Make the website look like a premium international company website.
 
-  /* ---------- section shell ---------- */
-  section{padding:80px 24px;}
-  .section-head{max-width:640px;margin:0 auto 46px;text-align:center;}
-  .section-head .eyebrow{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--jute-dark);font-weight:700;}
-  .section-head h2{font-size:clamp(28px,4vw,40px);margin-top:10px;}
-  .section-head p{margin-top:12px;color:var(--ink-soft);font-size:15.5px;line-height:1.6;}
+Use
 
-  /* ---------- gallery ---------- */
-  .gallery{background:var(--sack);}
-  .gallery-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-  }
-  .gallery-grid figure{
-    position:relative;border-radius:6px;overflow:hidden;aspect-ratio:3/4;
-    border:1px solid rgba(0,0,0,0.08);
-  }
-  .gallery-grid figure:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;}
-  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
-  .gallery-grid figure:hover img{transform:scale(1.06);}
-  .gallery-grid figcaption{
-    position:absolute;left:0;right:0;bottom:0;padding:14px;
-    background:linear-gradient(to top, rgba(20,14,6,0.75), transparent);
-    color:#fff;font-size:13px;font-weight:600;
-    opacity:0;transform:translateY(8px);transition:all .3s ease;
-  }
-  .gallery-grid figure:hover figcaption{opacity:1;transform:translateY(0);}
+• Glassmorphism
+• Neumorphism
+• 3D cards
+• Floating animations
+• Scroll animations
+• Animated glowing borders
+• Animated gradients
+• Particle background
+• Mouse hover effects
+• Tilt animation
+• Smooth page transitions
+• Animated buttons
+• Beautiful loading screen
+• Cursor glow
+• Floating shapes
+• Premium typography
+• Modern icons
+• Soft shadows
+• Premium golden + black color palette
 
-  /* ---------- what we stock ---------- */
-  .stock-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;
-  }
-  .stock-card{
-    background:var(--sack-light);border:1px solid rgba(138,95,49,0.25);
-    border-radius:8px;padding:26px 22px;
-    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-  }
-  .stock-card:hover{transform:translateY(-6px);box-shadow:0 16px 30px rgba(44,32,19,0.1);border-color:var(--jute);}
-  .stock-card .ic{
-    width:46px;height:46px;border-radius:50%;background:var(--jute);color:#fff;
-    display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;
-  }
-  .stock-card h3{font-size:17px;margin-bottom:8px;}
-  .stock-card p{font-size:14px;color:var(--ink-soft);line-height:1.55;}
+The website should feel worth ₹5,00,000.
 
-  /* ---------- story / about ---------- */
-  .about{background:var(--ink);color:var(--sack-light);}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-  .about h2{color:#fff;font-size:clamp(26px,4vw,36px);margin-bottom:18px;}
-  .about p{color:#cbb99a;font-size:15.5px;line-height:1.75;margin-bottom:14px;}
-  .about-figure{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);}
-  .stat-row{display:flex;gap:36px;margin-top:26px;}
-  .stat{}
-  .stat .num{font-family:Georgia,serif;font-size:32px;font-weight:800;color:var(--sack);}
-  .stat .lbl{font-size:12px;color:#a9977a;text-transform:uppercase;letter-spacing:0.1em;margin-top:2px;}
+=================================
+LOGO
+=================================
 
-  /* ---------- hours + location ---------- */
-  .visit{background:var(--sack-light);}
-  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
-  .info-card{
-    background:#fff;border:1px solid rgba(138,95,49,0.2);border-radius:10px;padding:32px;
-  }
-  .info-card h3{font-size:20px;margin-bottom:18px;}
-  .hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(0,0,0,0.1);font-size:14.5px;}
-  .hours-row:last-child{border-bottom:none;}
-  .hours-row .day{font-weight:600;}
-  .hours-row .time{color:var(--green);font-weight:700;}
-  .addr-block{margin-top:22px;padding-top:22px;border-top:1px solid rgba(0,0,0,0.08);}
-  .addr-block .lbl{font-size:12px;text-transform:uppercase;letter-spacing:0.1em;color:var(--jute-dark);font-weight:700;margin-bottom:8px;}
-  .addr-block address{font-style:normal;font-size:15px;line-height:1.6;color:var(--ink-soft);}
-  .map-frame{
-    border-radius:10px;overflow:hidden;border:1px solid rgba(138,95,49,0.2);
-    height:100%;min-height:360px;position:relative;
-  }
-  .map-frame iframe{width:100%;height:100%;min-height:360px;border:0;display:block;filter:sepia(8%) saturate(92%);}
-  .map-open{
-    position:absolute;bottom:14px;right:14px;background:#fff;padding:10px 16px;border-radius:6px;
-    font-size:13px;font-weight:700;box-shadow:0 6px 16px rgba(0,0,0,0.15);
-    display:flex;align-items:center;gap:6px;
-  }
+Create a beautiful text logo
 
-  /* ---------- contact ---------- */
-  .contact{background:var(--jute);color:#fff;text-align:center;position:relative;overflow:hidden;}
-  .contact::before{
-    content:'';position:absolute;inset:0;
-    background:repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 10px, transparent 10px 20px);
-  }
-  .contact-inner{position:relative;max-width:600px;margin:0 auto;}
-  .contact h2{color:#fff;font-size:clamp(28px,4vw,38px);margin-bottom:14px;}
-  .contact p{color:rgba(255,255,255,0.85);font-size:15.5px;margin-bottom:30px;}
-  .contact-methods{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-  .contact-pill{
-    background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.4);
-    padding:14px 24px;border-radius:100px;font-weight:700;font-size:14.5px;
-    display:flex;align-items:center;gap:9px;transition:all .2s ease;
-  }
-  .contact-pill:hover{background:#fff;color:var(--jute-dark);transform:translateY(-3px);}
+"BHOLE BARDANA SHOP"
 
-  /* ---------- footer ---------- */
-  footer{background:var(--ink);color:#a9977a;padding:30px 24px;text-align:center;font-size:13px;}
-  footer .hi{margin-top:4px;color:#7d6c50;}
+with
 
-  /* ---------- mobile ---------- */
-  @media (max-width:820px){
-    nav ul{
-      position:fixed;top:73px;left:0;right:0;background:var(--sack-light);
-      flex-direction:column;padding:20px 24px;gap:0;border-bottom:3px solid var(--jute);
-      transform:translateY(-120%);transition:transform .3s ease;
-    }
-    nav ul.open{transform:translateY(0);}
-    nav ul a{display:block;padding:14px 0;border-bottom:1px solid rgba(0,0,0,0.06);}
-    .nav-toggle{display:block;}
-    .about-grid,.visit-grid{grid-template-columns:1fr;}
-    .gallery-grid{grid-template-columns:repeat(2,1fr);}
-    .gallery-grid figure:first-child{grid-column:span 2;grid-row:span 1;aspect-ratio:16/10;}
-    .tagline-strip{gap:20px;}
-  }
+Golden gradient
+3D effect
+Shining animation
 
-  /* ---------- marquee ticker ---------- */
-  .ticker{
-    background:var(--ink);color:var(--sack);overflow:hidden;white-space:nowrap;
-    border-bottom:3px solid var(--thread);position:relative;
-  }
-  .ticker-track{display:inline-flex;gap:0;animation:tickerScroll 22s linear infinite;}
-  .ticker-track span{
-    padding:11px 34px;font-size:13.5px;font-weight:700;letter-spacing:0.04em;
-    display:inline-flex;align-items:center;gap:10px;white-space:nowrap;
-  }
-  .ticker-track span::after{content:'✦';color:var(--thread);margin-left:34px;}
-  @keyframes tickerScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+=================================
+HERO SECTION
+=================================
 
-  /* ---------- floating hero particles ---------- */
-  .hero{isolation:isolate;}
-  .float-el{
-    position:absolute;pointer-events:none;opacity:0.85;font-size:26px;
-    animation:floatY 6s ease-in-out infinite, spinSlow 12s linear infinite;
-    filter:drop-shadow(0 4px 6px rgba(0,0,0,0.15));
-  }
-  @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-22px);}}
-  @keyframes spinSlow{from{transform:rotate(-6deg);}to{transform:rotate(6deg);}}
-  .spark{
-    position:absolute;width:6px;height:6px;border-radius:50%;background:var(--thread);
-    box-shadow:0 0 10px 3px rgba(201,79,79,0.6);
-    animation:sparkPulse 1.8s ease-in-out infinite;
-  }
-  @keyframes sparkPulse{0%,100%{opacity:0.3;transform:scale(0.7);}50%{opacity:1;transform:scale(1.3);}}
+Large heading
 
-  /* ---------- sticky call button ---------- */
-  .call-fab{
-    position:fixed;right:22px;bottom:22px;z-index:80;
-    background:var(--green);color:#fff;border-radius:100px;
-    padding:16px 22px;display:flex;align-items:center;gap:10px;
-    font-weight:800;font-size:14.5px;box-shadow:0 10px 26px rgba(76,107,63,0.45);
-    animation:fabPulse 2.2s ease-in-out infinite;
-  }
-  .call-fab:hover{transform:scale(1.06);}
-  @keyframes fabPulse{
-    0%,100%{box-shadow:0 10px 26px rgba(76,107,63,0.45);}
-    50%{box-shadow:0 10px 26px rgba(76,107,63,0.45), 0 0 0 10px rgba(76,107,63,0.12);}
-  }
-  .call-fab .ring{width:9px;height:9px;border-radius:50%;background:#c9ffb0;animation:pulse 1.4s infinite;}
+"Bhole Bardana Shop"
 
-  /* ---------- Surya gas stove showcase ---------- */
-  .stove-section{
-    background:radial-gradient(ellipse at center, #241209 0%, #150a05 70%, #0e0603 100%);
-    position:relative;overflow:hidden;color:#fff;
-  }
-  .stove-section .section-head .eyebrow{color:#ffb066;}
-  .stove-section .section-head h2{color:#fff;}
-  .stove-section .section-head p{color:#d8b89a;}
-  .stove-showcase{
-    display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
-  }
-  .stove-rig{position:relative;display:flex;justify-content:center;align-items:flex-end;height:340px;}
-  .stove-body{width:260px;position:relative;z-index:2;}
-  .stove-body svg{width:100%;display:block;filter:drop-shadow(0 20px 30px rgba(0,0,0,0.6));}
-  .flame-wrap{position:absolute;left:50%;bottom:198px;transform:translateX(-50%);z-index:3;width:120px;height:150px;}
-  .flame{
-    position:absolute;bottom:0;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
-    background:radial-gradient(circle at 50% 80%, #fff6c8 0%, #ffd23f 22%, #ff9d1c 48%, #ff5b1c 72%, transparent 78%);
-    animation:flicker 0.9s ease-in-out infinite alternate;
-    filter:blur(0.3px);
-  }
-  .flame.f1{left:8px;width:34px;height:78px;animation-duration:0.7s;}
-  .flame.f2{left:44px;width:40px;height:100px;animation-duration:0.85s;animation-delay:.1s;}
-  .flame.f3{left:80px;width:34px;height:78px;animation-duration:0.75s;animation-delay:.2s;}
-  @keyframes flicker{
-    0%{transform:scaleY(1) scaleX(1) skewX(0deg);opacity:0.95;}
-    30%{transform:scaleY(1.12) scaleX(0.92) skewX(2deg);opacity:1;}
-    60%{transform:scaleY(0.9) scaleX(1.06) skewX(-3deg);opacity:0.9;}
-    100%{transform:scaleY(1.05) scaleX(0.96) skewX(1deg);opacity:1;}
-  }
-  .flame-glow{
-    position:absolute;left:50%;bottom:190px;transform:translateX(-50%);
-    width:220px;height:220px;border-radius:50%;z-index:1;
-    background:radial-gradient(circle, rgba(255,150,40,0.45) 0%, rgba(255,90,20,0.18) 45%, transparent 75%);
-    animation:glowPulse 1.4s ease-in-out infinite;
-  }
-  @keyframes glowPulse{0%,100%{opacity:0.7;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.12);}}
-  .ember{
-    position:absolute;bottom:200px;width:4px;height:4px;border-radius:50%;
-    background:#ffb066;box-shadow:0 0 6px 2px rgba(255,150,40,0.8);
-    animation:emberRise 2.4s ease-in infinite;
-  }
-  @keyframes emberRise{
-    0%{transform:translateY(0) translateX(0);opacity:1;}
-    100%{transform:translateY(-160px) translateX(var(--drift,10px));opacity:0;}
-  }
-  .surya-badge{
-    position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:4;
-    background:#fff;color:#a83c2b;font-weight:900;font-size:11px;letter-spacing:0.08em;
-    padding:6px 14px;border-radius:100px;box-shadow:0 6px 14px rgba(0,0,0,0.35);
-    text-transform:uppercase;
-  }
-  .stove-copy .eyebrow{color:#ffb066;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;}
-  .stove-copy h3{font-size:clamp(24px,3vw,32px);margin:10px 0 14px;color:#fff;}
-  .stove-copy p{color:#d8b89a;font-size:15px;line-height:1.7;margin-bottom:10px;}
-  .stove-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-  .stove-tags span{
-    border:1px solid rgba(255,255,255,0.25);color:#ffd9a8;font-size:12px;font-weight:700;
-    padding:8px 14px;border-radius:100px;background:rgba(255,255,255,0.04);
-  }
+Subtitle
 
-  /* ---------- Polyplast harvest-guard section ---------- */
-  .polyplast-section{
-    background:linear-gradient(160deg, #f6ecd9 0%, #e7cfa1 100%);
-    position:relative;overflow:hidden;
-  }
-  .poly-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
-  .poly-rig{position:relative;height:320px;display:flex;align-items:center;justify-content:center;}
-  .poly-crop{position:relative;width:230px;}
-  .poly-crop svg{width:100%;display:block;}
-  .poly-shield{
-    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    animation:shieldPulse 2.6s ease-in-out infinite;
-  }
-  .poly-shield svg{width:280px;filter:drop-shadow(0 8px 18px rgba(76,107,63,0.35));}
-  @keyframes shieldPulse{0%,100%{transform:scale(1);opacity:0.92;}50%{transform:scale(1.05);opacity:1;}}
-  .poly-drop{
-    position:absolute;width:8px;height:8px;border-radius:50% 50% 50% 0;
-    background:rgba(76,107,63,0.5);transform:rotate(45deg);
-    animation:dropSlide 2.8s linear infinite;
-  }
-  @keyframes dropSlide{
-    0%{transform:translateY(-40px) rotate(45deg);opacity:0;}
-    15%{opacity:0.8;}
-    55%{opacity:0.8;transform:translateY(70px) rotate(45deg);}
-    56%{opacity:0;}
-    100%{opacity:0;transform:translateY(70px) rotate(45deg);}
-  }
-  .poly-copy .eyebrow{color:var(--green);font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;}
-  .poly-copy h3{font-size:clamp(24px,3vw,32px);margin:10px 0 14px;color:var(--ink);}
-  .poly-copy p{color:var(--ink-soft);font-size:15px;line-height:1.7;margin-bottom:10px;}
-  .poly-badge{
-    display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;
-    padding:9px 18px;border-radius:100px;font-weight:800;font-size:13px;margin-top:14px;
-    box-shadow:0 10px 20px rgba(76,107,63,0.3);
-  }
-  .poly-badge .leaf{animation:leafSway 2s ease-in-out infinite;}
-  @keyframes leafSway{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
+Your Trusted Bardana Store in Farrukhabad
 
-  /* ---------- hyper hover on stock cards ---------- */
-  .stock-card{position:relative;}
-  .stock-card:hover .ic{animation:iconBounce .5s ease;}
-  @keyframes iconBounce{0%,100%{transform:scale(1) rotate(0);}30%{transform:scale(1.2) rotate(-8deg);}60%{transform:scale(0.95) rotate(6deg);}}
+Buttons
 
-  .btn-solid,.btn-outline{animation:none;}
-  .btn:hover{animation:btnShake .4s ease;}
-  @keyframes btnShake{
-    0%,100%{transform:translateY(-3px) rotate(0);}
-    25%{transform:translateY(-3px) rotate(-1.5deg);}
-    75%{transform:translateY(-3px) rotate(1.5deg);}
-  }
+View Products
 
-  @media (max-width:820px){
-    .stove-showcase,.poly-grid{grid-template-columns:1fr;}
-    .stove-rig,.poly-rig{height:280px;}
-  }
+Contact Us
 
-  @media (prefers-reduced-motion:reduce){
-    *{animation-duration:0.001s !important;animation-iteration-count:1 !important;transition-duration:0.001s !important;}
-  }
-</style>
-</head>
-<body>
+Background should have animated 3D floating sacks, ropes and industrial shapes.
 
-<header>
-  <nav>
-    <div class="brand">
-      <div class="mark">भो</div>
-      <div class="names">
-        <div class="en">Bhole Bardana Shop</div>
-        <div class="hi">भोले बर्दाना शॉप</div>
-      </div>
-    </div>
-    <ul id="navList">
-      <li><a href="#gallery">Inside the Shop</a></li>
-      <li><a href="#stock">What We Stock</a></li>
-      <li><a href="#surya">Surya Stoves</a></li>
-      <li><a href="#polyplast">Polyplast</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#visit">Hours &amp; Location</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
-  </nav>
-</header>
+=================================
+IMAGE GALLERY
+=================================
 
-<div class="ticker">
-  <div class="ticker-track">
-    <span>🔥 Surya Gas Stoves — Now In Stock</span>
-    <span>🌾 Polyplast Tarpaulins — Secure Your Harvest</span>
-    <span>🧵 Bardana &amp; Sacks — Every Size, Every Season</span>
-    <span>📞 Call Now — 6392694227</span>
-    <span>🔥 Surya Gas Stoves — Now In Stock</span>
-    <span>🌾 Polyplast Tarpaulins — Secure Your Harvest</span>
-    <span>🧵 Bardana &amp; Sacks — Every Size, Every Season</span>
-    <span>📞 Call Now — 6392694227</span>
-  </div>
-</div>
+Images already exist in same folder.
 
-<a class="call-fab" href="tel:+916392694227"><span class="ring"></span> Call: 6392694227</a>
+Use
 
-<section class="hero">
-  <span class="float-el" style="top:14%;left:8%;animation-delay:0s;">🧵</span>
-  <span class="float-el" style="top:22%;right:9%;animation-delay:.6s;font-size:30px;">🔥</span>
-  <span class="float-el" style="top:62%;left:5%;animation-delay:1.1s;font-size:22px;">🕶️</span>
-  <span class="float-el" style="top:70%;right:7%;animation-delay:1.6s;font-size:24px;">🌾</span>
-  <span class="float-el" style="top:8%;left:44%;animation-delay:2s;font-size:18px;">✦</span>
-  <span class="spark" style="top:30%;left:20%;animation-delay:.3s;"></span>
-  <span class="spark" style="top:18%;right:24%;animation-delay:.9s;"></span>
-  <span class="spark" style="top:75%;left:30%;animation-delay:1.4s;"></span>
-  <span class="spark" style="top:60%;right:18%;animation-delay:.5s;"></span>
-  <div class="eyebrow">Main Market · Near Shiv Mandir · Yaqut Ganj</div>
-  <h1>Everything the household<br>and the <span>godown</span> need.</h1>
-  <p class="lede">A neighbourhood store in Farrukhabad stacked floor to ceiling with bardana (sacks), packaging rolls, hardware, sunglasses, gas cylinders and daily essentials — run the way a proper mohalla shop should be.</p>
-  <div class="cta-row">
-    <a href="#visit" class="btn btn-solid">Get Directions</a>
-    <a href="#contact" class="btn btn-outline">Contact Us</a>
-  </div>
-  <div class="status"><span class="dot"></span> Open Now · Closes 9 PM</div>
+Shop-1.jpg
 
-  <div class="tagline-strip">
-    <div class="hang-tag"><div class="string"></div><div class="card">Bardana &amp; Sacks</div></div>
-    <div class="hang-tag"><div class="string"></div><div class="card">Packaging Rolls</div></div>
-    <div class="hang-tag"><div class="string"></div><div class="card">Sunglasses</div></div>
-    <div class="hang-tag"><div class="string"></div><div class="card">Gas &amp; Hardware</div></div>
-  </div>
-</section>
+Shop-2.jpg
 
-<div class="weave"></div>
+Shop-3.jpg
 
-<section class="gallery" id="gallery">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Photo Tour</div>
-      <h2>Inside the shop</h2>
-      <p>Shelves packed edge to edge — bardana rolls, tarpaulin, hardware bins and everything in between.</p>
-    </div>
-    <div class="gallery-grid reveal">
-      <figure><img src="images/shop-2.jpg" alt="Shop interior packed with sacks and rolls"><figcaption>Main aisle — bardana &amp; rolls</figcaption></figure>
-      <figure><img src="images/shop-1.jpg" alt="Storage shelves and seating area"><figcaption>Storage shelving &amp; seating</figcaption></figure>
-      <figure><img src="images/shop-3.jpg" alt="Hardware, gas cylinder and household goods"><figcaption>Hardware &amp; gas corner</figcaption></figure>
-      <figure><img src="images/shop-2.jpg" alt="Sunglasses rack and packaging rolls"><figcaption>Sunglasses &amp; packaging</figcaption></figure>
-    </div>
-  </div>
-</section>
+Create
 
-<section class="stock" id="stock" style="background:var(--sack-light);">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">On the Shelves</div>
-      <h2>What we stock</h2>
-      <p>If it belongs in a godown, a kitchen, or a toolbox — chances are it's here.</p>
-    </div>
-    <div class="stock-grid">
-      <div class="stock-card reveal"><div class="ic">🧵</div><h3>Bardana &amp; Sacks</h3><p>Jute and PP sacks in every size, sold loose or by the bundle for grain, feed and storage.</p></div>
-      <div class="stock-card reveal"><div class="ic">📦</div><h3>Packaging Rolls</h3><p>Tarpaulin, plastic sheeting and binding rope for covering, wrapping and transport.</p></div>
-      <div class="stock-card reveal"><div class="ic">🕶️</div><h3>Sunglasses</h3><p>A full rack of everyday sunglasses — pick, try, and go.</p></div>
-      <div class="stock-card reveal"><div class="ic">🔧</div><h3>Hardware &amp; Tools</h3><p>Basic hardware, fittings and household tools kept within arm's reach.</p></div>
-      <div class="stock-card reveal"><div class="ic">🔥</div><h3>Gas Cylinders</h3><p>Cylinders and burner accessories for the kitchen, always in stock.</p></div>
-      <div class="stock-card reveal"><div class="ic">🧺</div><h3>Daily Essentials</h3><p>The everyday odds and ends every household ends up needing — kept close to the counter.</p></div>
-    </div>
-  </div>
-</section>
+3D rotating gallery
 
-<section class="stove-section" id="surya">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Kitchen Essentials</div>
-      <h2>Surya gas stoves — burning bright, in stock</h2>
-      <p>We keep genuine Surya burners and stoves on the shelf, ready to fit straight into your kitchen.</p>
-    </div>
-    <div class="stove-showcase">
-      <div class="stove-rig reveal">
-        <div class="flame-glow"></div>
-        <span class="ember" style="left:44%;--drift:-14px;animation-delay:0s;"></span>
-        <span class="ember" style="left:50%;--drift:8px;animation-delay:.5s;"></span>
-        <span class="ember" style="left:56%;--drift:16px;animation-delay:1s;"></span>
-        <span class="ember" style="left:48%;--drift:-6px;animation-delay:1.5s;"></span>
-        <div class="flame-wrap">
-          <div class="flame f1"></div>
-          <div class="flame f2"></div>
-          <div class="flame f3"></div>
-        </div>
-        <div class="stove-body">
-          <div class="surya-badge">☀ Surya</div>
-          <svg viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="70" width="240" height="52" rx="8" fill="#c9c9c9"/>
-            <rect x="10" y="70" width="240" height="10" rx="4" fill="#e8e8e8"/>
-            <ellipse cx="130" cy="72" rx="70" ry="14" fill="#3a3a3a"/>
-            <ellipse cx="130" cy="70" rx="58" ry="10" fill="#1c1c1c"/>
-            <g fill="#4c4c4c">
-              <rect x="80" y="64" width="6" height="10" rx="2"/>
-              <rect x="98" y="60" width="6" height="14" rx="2"/>
-              <rect x="116" y="58" width="6" height="16" rx="2"/>
-              <rect x="138" y="58" width="6" height="16" rx="2"/>
-              <rect x="156" y="60" width="6" height="14" rx="2"/>
-              <rect x="174" y="64" width="6" height="10" rx="2"/>
-            </g>
-            <circle cx="34" cy="96" r="11" fill="#a83c2b"/>
-            <circle cx="34" cy="96" r="4" fill="#f6ecd9"/>
-            <circle cx="226" cy="96" r="11" fill="#a83c2b"/>
-            <circle cx="226" cy="96" r="4" fill="#f6ecd9"/>
-            <rect x="6" y="118" width="248" height="6" rx="3" fill="#8a8a8a"/>
-          </svg>
-        </div>
-      </div>
-      <div class="stove-copy reveal">
-        <div class="eyebrow">Company: Surya</div>
-        <h3>Built for everyday flame, sold at the counter</h3>
-        <p>From single-burner stoves to full cylinder setups, the Surya range in our shop is picked for households that cook every single day — steady flame, sturdy build, easy refills.</p>
-        <p>Ask at the counter for the current Surya stock and cylinder exchange rates.</p>
-        <div class="stove-tags">
-          <span>Steady Flame</span>
-          <span>Cylinder Exchange</span>
-          <span>Burner Spares</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+Hover zoom
 
-<div class="weave"></div>
+Lightbox
 
-<section class="polyplast-section" id="polyplast">
-  <div class="wrap poly-grid">
-    <div class="poly-copy reveal">
-      <div class="eyebrow">Company: Polyplast</div>
-      <h3>Polyplast helps secure your harvest</h3>
-      <p>Heavy-duty Polyplast tarpaulins and covers keep grain, straw and stock dry through rain and dust — laid straight from the roll, no guesswork.</p>
-      <p>Sold by size or by the roll, cut to whatever the season needs.</p>
-      <div class="poly-badge"><span class="leaf">🌾</span> Secures Your Harvest</div>
-    </div>
-    <div class="poly-rig reveal">
-      <span class="poly-drop" style="left:38%;animation-delay:0s;"></span>
-      <span class="poly-drop" style="left:50%;animation-delay:.7s;"></span>
-      <span class="poly-drop" style="left:62%;animation-delay:1.4s;"></span>
-      <span class="poly-drop" style="left:44%;animation-delay:2.1s;"></span>
-      <div class="poly-crop">
-        <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="100" cy="148" rx="80" ry="10" fill="rgba(76,107,63,0.15)"/>
-          <g stroke="#c9a227" stroke-width="4" stroke-linecap="round">
-            <line x1="60" y1="140" x2="52" y2="70"/>
-            <line x1="85" y1="140" x2="80" y2="55"/>
-            <line x1="110" y1="140" x2="112" y2="50"/>
-            <line x1="135" y1="140" x2="140" y2="60"/>
-            <line x1="150" y1="140" x2="158" y2="75"/>
-          </g>
-          <g fill="#e0b93a">
-            <ellipse cx="52" cy="66" rx="7" ry="16" transform="rotate(-12 52 66)"/>
-            <ellipse cx="80" cy="50" rx="7" ry="18" transform="rotate(-6 80 50)"/>
-            <ellipse cx="112" cy="44" rx="7" ry="19"/>
-            <ellipse cx="140" cy="55" rx="7" ry="18" transform="rotate(8 140 55)"/>
-            <ellipse cx="158" cy="70" rx="7" ry="16" transform="rotate(14 158 70)"/>
-          </g>
-        </svg>
-      </div>
-      <div class="poly-shield">
-        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <path d="M100 10 L180 42 V95 C180 145 145 178 100 195 C55 178 20 145 20 95 V42 Z"
-                fill="rgba(76,107,63,0.16)" stroke="#4c6b3f" stroke-width="4"/>
-          <path d="M100 34 L160 58 V95 C160 132 135 156 100 170 C65 156 40 132 40 95 V58 Z"
-                fill="rgba(231,207,161,0.35)" stroke="#8a5f31" stroke-width="2" stroke-dasharray="6 5"/>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
+Reflection effect
 
-<div class="weave"></div>
+=================================
+ABOUT SECTION
+=================================
 
-<section class="about" id="about">
-  <div class="wrap about-grid">
-    <div class="reveal">
-      <div class="eyebrow" style="color:var(--sack);">Our Story</div>
-      <h2>A shop built on what the mohalla actually needs</h2>
-      <p>Bhole Bardana Shop sits in the Main Market of Yaqut Ganj, right by Shiv Mandir — a spot people have known for years. It's a store, not a showroom: shelves are stacked for use, not display, and stock moves the way it should in a working neighbourhood market.</p>
-      <p>Whether you're a shopkeeper restocking bardana for the season or a household needing a cylinder refilled, the counter is the same one it's always been.</p>
-      <div class="stat-row">
-        <div class="stat"><div class="num">Store</div><div class="lbl">Category</div></div>
-        <div class="stat"><div class="num">9 PM</div><div class="lbl">Daily Close</div></div>
-        <div class="stat"><div class="num">209625</div><div class="lbl">Pincode</div></div>
-      </div>
-    </div>
-    <div class="about-figure reveal">
-      <img src="images/shop-3.jpg" alt="Rolls, hardware and gas cylinder stacked in the shop">
-    </div>
-  </div>
-</section>
+Write a professional introduction.
 
-<section class="visit" id="visit">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Find Us</div>
-      <h2>Hours &amp; location</h2>
-    </div>
-    <div class="visit-grid">
-      <div class="info-card reveal">
-        <h3>Store Hours</h3>
-        <div class="hours-row"><span class="day">Monday – Saturday</span><span class="time">Open · Closes 9 PM</span></div>
-        <div class="hours-row"><span class="day">Sunday</span><span class="time">Open · Closes 9 PM</span></div>
-        <div class="addr-block">
-          <div class="lbl">Address</div>
-          <address>Bhole Bardana Shop<br>Main Market, near Shiv Mandir,<br>Yaqut Ganj, Farrukhabad,<br>Uttar Pradesh 209625</address>
-          <div class="lbl" style="margin-top:16px;">Phone</div>
-          <address><a href="tel:+916392694227">6392694227</a></address>
-        </div>
-      </div>
-      <a class="map-frame reveal" href="https://www.google.com/maps/search/?api=1&query=Bhole+Bardana+Shop+Yaqut+Ganj+Farrukhabad" target="_blank" rel="noopener">
-        <iframe src="https://www.google.com/maps?q=Bhole+Bardana+Shop,+Main+Market,+near+Shiv+Mandir,+Yaqut+Ganj,+Farrukhabad,+Uttar+Pradesh+209625&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <div class="map-open">📍 Open in Google Maps</div>
-      </a>
-    </div>
-  </div>
-</section>
+Mention
 
-<section class="contact" id="contact">
-  <div class="wrap contact-inner">
-    <h2>Get in touch</h2>
-    <p>Questions about stock, bulk bardana orders, or anything else — reach out directly.</p>
-    <div class="contact-methods">
-      <a class="contact-pill" href="tel:+916392694227">📞 6392694227</a>
-      <a class="contact-pill" href="mailto:kumarguptashiv349@gmail.com">✉️ kumarguptashiv349@gmail.com</a>
-      <a class="contact-pill" href="https://www.google.com/maps/search/?api=1&query=Bhole+Bardana+Shop+Yaqut+Ganj+Farrukhabad" target="_blank" rel="noopener">📍 Get Directions</a>
-    </div>
-  </div>
-</section>
+Bhole Bardana Shop is a trusted shop in Farrukhabad dealing in high-quality bardana products and gas accessories. We provide reliable products at affordable prices with excellent customer service.
 
-<footer>
-  <div>Bhole Bardana Shop · Main Market, near Shiv Mandir, Yaqut Ganj, Farrukhabad, UP 209625 · 📞 6392694227</div>
-  <div class="hi">भोले बर्दाना शॉप</div>
-</footer>
+=================================
+PRODUCT SECTION
+=================================
 
-<script>
-  const toggle=document.getElementById('navToggle');
-  const list=document.getElementById('navList');
-  toggle.addEventListener('click',()=>list.classList.toggle('open'));
-  list.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>list.classList.remove('open')));
+Create beautiful animated product cards.
 
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-  },{threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+Products:
 
-</body>
-</html> 
-<figure>
-  <img src="images/Shop-2.jpg" alt="Shop interior packed with sacks and rolls">
-  <figcaption>Main aisle — bardana &amp; rolls</figcaption>
-</figure>
+Jhal
 
-<figure>
-  <img src="images/Shop-1.jpg" alt="Storage shelves and seating area">
-  <figcaption>Storage shelving &amp; seating</figcaption>
-</figure>
+Bardana Bags
 
-<figure>
-  <img src="images/Shop-3.jpg" alt="Hardware, gas cylinder and household goods">
-  <figcaption>Hardware &amp; gas corner</figcaption>
-</figure>
+Plastic Bags
 
-<figure>
-  <img src="images/Shop-2.jpg" alt="Sunglasses rack and packaging rolls">
-  <figcaption>Sunglasses &amp; packaging</figcaption>
-</figure>
+Polyplast
 
-<img src="images/Shop-3.jpg" alt="Rolls, hardware and gas cylinder stacked in the shop">
+Belts
+
+Ties
+
+Jaali
+
+Gas Stoves
+
+Gas Pipe
+
+Gas Regulator
+
+Gas Burner
+
+Gas Lighter
+
+Gas Accessories
+
+Packaging Materials
+
+And Many More
+
+Each card should have
+
+3D hover animation
+
+Gradient border
+
+Floating shadow
+
+=================================
+SHOP TIMING
+=================================
+
+Display
+
+Open Every Day
+
+7:00 AM – 9:00 PM
+
+Add an animated clock icon.
+
+=================================
+GOOGLE MAP
+=================================
+
+Add a section
+
+Find Us on Google Maps
+
+Use an embedded Google Maps iframe placeholder with a comment saying:
+"Replace this iframe src with the actual Google Maps embed link."
+
+Also include a button:
+
+Open in Google Maps
+
+=================================
+CONTACT SECTION
+=================================
+
+Email
+
+mailkkumarguptashiv349@gmail.com
+
+Phone
+
+6392694227
+
+WhatsApp
+
+6392694227
+
+Make all clickable.
+
+=================================
+WHATSAPP BUTTON
+=================================
+
+Floating WhatsApp button.
+
+When clicked it opens
+
+https://wa.me/916392694227?text=Hy,%20Bhole%20Bardana%20Shop
+
+=================================
+CALL BUTTON
+=================================
+
+Floating Call button
+
+Calls
+
+6392694227
+
+=================================
+FOOTER
+=================================
+
+Show
+
+© 2026 Bhole Bardana Shop
+
+All Rights Reserved
+
+Designed with ❤️
+
+=================================
+ANIMATIONS
+=================================
+
+Include
+
+Loading animation
+
+Fade up
+
+Slide
+
+Zoom
+
+Rotate
+
+Floating
+
+Glow
+
+Pulse
+
+Bounce
+
+3D tilt
+
+Mouse movement parallax
+
+Smooth scrolling
+
+Animated counters
+
+Animated background blobs
+
+=================================
+SEO
+=================================
+
+Title
+
+Bhole Bardana Shop | Farrukhabad
+
+Meta Description
+
+Bhole Bardana Shop is a trusted Bardana and Gas Accessories shop in Farrukhabad. We provide Jhal, Bags, Polyplast, Belts, Jaali, Gas Stoves, Gas Pipes, Regulators and many more products.
+
+=================================
+EXTRA FEATURES
+=================================
+
+Sticky Navbar
+
+Back To Top Button
+
+Dark Luxury Theme
+
+Product Search Box
+
+Testimonials Section
+
+FAQ Section
+
+Animated Statistics
+
+Image Lazy Loading
+
+Custom Scrollbar
+
+Ripple Button Effects
+
+Premium Glass Cards
+
+=================================
+FINAL REQUIREMENTS
+=================================
+
+The code must look premium and professionally written.
+
+No errors.
+
+No external libraries.
+
+Everything inside one HTML file.
+
+Use Shop-1.jpg, Shop-2.jpg and Shop-3.jpg from local folder.
+
+Make it look like one of the best shop websites on the internet with ultra-modern 3D animations, smooth effects, premium UI, and responsive design.
