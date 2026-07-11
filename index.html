@@ -5,72 +5,100 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhole Bardana Shop — Farrukhabad</title>
 <style>
-  :root{--jute:#b98247;--jute-dark:#8a5f31;--sack:#e7cfa1;--sack-light:#f6ecd9;--ink:#2c2013;--ink-soft:#5a4630;--green:#4c6b3f;--whatsapp:#25D366;--terracotta-red:#a83c2b;}
+  :root{
+    --jute:#b98247; --jute-dark:#8a5f31; --sack:#e7cfa1; --sack-light:#f6ecd9;
+    --ink:#2c2013; --ink-soft:#5a4630; --green:#4c6b3f; --whatsapp:#25D366; --terracotta-red:#a83c2b; --thread:#c94f4f;
+  }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{font-family:'Segoe UI',sans-serif;background:var(--sack-light);color:var(--ink);}
-  a{text-decoration:none;color:inherit;}
-  img{max-width:100%;display:block;}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--sack-light);color:var(--ink);}
+  h1,h2,h3{font-family:Georgia,serif;font-weight:700;} 
+  a{text-decoration:none;color:inherit;} 
+  img{max-width:100%;display:block;} 
   .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+  .weave{height:14px;background:repeating-linear-gradient(45deg,var(--jute) 0 6px, var(--jute-dark) 6px 12px);}
+
+  /* FLOATING BUTTONS */
   .fab-group{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;flex-direction:column;gap:14px;}
-  .fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;box-shadow:0 10px 26px rgba(0,0,0,0.3);}
+  .fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;box-shadow:0 10px 26px rgba(0,0,0,0.3);}
   .fab-call{background:var(--green);} .fab-whatsapp{background:var(--whatsapp);}
-  header{position:sticky;top:0;background:rgba(246,236,217,0.95);border-bottom:3px solid var(--jute);padding:16px 24px;}
-  .brand{display:flex;gap:12px;align-items:center;} .brand .mark{width:42px;height:42px;border-radius:50%;background:var(--jute);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;}
-  .hero{padding:90px 24px;text-align:center;}
-  .btn{padding:14px 28px;border-radius:3px;font-weight:700;border:2px solid var(--ink);display:inline-block;margin:5px;}
-  .btn-solid{background:var(--terracotta-red);color:#fff;}
-  .gallery{background:var(--sack);padding:80px 24px;}
-  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  .gallery-grid figure{border-radius:6px;overflow:hidden;}
-  .contact{background:var(--jute);color:#fff;padding:80px 24px;text-align:center;}
-  .contact-pill{background:rgba(255,255,255,0.12);padding:14px 24px;border-radius:100px;display:inline-block;margin:8px;}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:50;background:rgba(246,236,217,0.95);border-bottom:3px solid var(--jute);padding:16px 24px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand .mark{width:42px;height:42px;border-radius:50%;background:var(--jute);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:900;}
+  .brand .en{font-size:19px;font-weight:800;} .brand .hi{font-size:13px;color:var(--ink-soft);}
+
+  /* HERO */
+  .hero{padding:90px 24px;text-align:center;background:var(--sack-light);} 
+  .hero .eyebrow{font-size:12.5px;text-transform:uppercase;color:var(--jute-dark);font-weight:700;}
+  .hero h1{font-size:40px;margin:15px 0;} .hero h1 span{color:var(--terracotta-red);}
+  .hero p{max-width:560px;margin:10px auto;color:var(--ink-soft);}
+  .btn{padding:14px 28px;border-radius:3px;font-weight:700;border:2px solid var(--ink);display:inline-block;margin:10px;}
+  .btn-solid{background:var(--terracotta-red);color:#fff;border-color:var(--terracotta-red);}
+
+  /* GALLERY */
+  .gallery{background:var(--sack);padding:80px 24px;} 
+  .section-head{text-align:center;margin-bottom:40px;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .gallery-grid figure{border-radius:8px;overflow:hidden;position:relative;}
+  .gallery-grid figcaption{position:absolute;bottom:0;left:0;right:0;padding:10px;background:rgba(0,0,0,0.6);color:#fff;font-size:13px;}
+
+  /* CONTACT */
+  .contact{background:var(--jute);color:#fff;padding:80px 24px;text-align:center;} 
+  .contact-pill{background:rgba(255,255,255,0.15);padding:14px 24px;border-radius:100px;display:inline-block;margin:8px;font-weight:700;}
+  
   footer{background:var(--ink);color:#a9977a;padding:30px;text-align:center;}
-  @media (max-width:820px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
 </style>
 </head>
 <body>
 
-<!-- FLOATING BUTTONS -->
+<!-- FLOATING BUTTONS: CALL + WHATSAPP FIXED -->
 <div class="fab-group">
-  <a class="fab fab-whatsapp" href="https://wa.me/916392694227?text=Hello%20Bhole%20Bardana%20Shop" target="_blank">💬</a>
+  <a class="fab fab-whatsapp" href="https://wa.me/916392694227?text=Hello%20Bhole%20Bardana%20Shop" target="_blank" rel="noopener">💬</a>
   <a class="fab fab-call" href="tel:+916392694227">📞</a>
 </div>
 
 <header>
-  <div class="brand"><div class="mark">भो</div><div><div style="font-weight:800;">Bhole Bardana Shop</div><div style="font-size:13px;">भोले बर्दाना शॉप</div></div></div>
+  <div class="brand"><div class="mark">भो</div><div><div class="en">Bhole Bardana Shop</div><div class="hi">भोले बर्दाना शॉप</div></div></div>
 </header>
 
 <section class="hero">
-  <div>Main Market · Near Shiv Mandir · Yaqut Ganj</div>
-  <h1 style="font-size:42px;margin:15px 0;">Everything the household<br>and the <span style="color:var(--terracotta-red);">godown</span> need.</h1>
+  <div class="eyebrow">Main Market · Near Shiv Mandir · Yaqut Ganj</div>
+  <h1>Everything the household<br>and the <span>godown</span> need.</h1>
+  <p>A neighbourhood store in Farrukhabad with bardana, packaging, hardware, sunglasses, gas cylinders.</p>
   <a href="tel:+916392694227" class="btn btn-solid">📞 Call Now: 6392694227</a>
 </section>
 
+<div class="weave"></div>
+
 <section class="gallery">
   <div class="wrap">
-    <h2 style="text-align:center;margin-bottom:30px;">Inside the shop</h2>
+    <div class="section-head"><h2>Inside the shop</h2></div>
     <div class="gallery-grid">
-      <figure><img src="images/shop-2.jpg" alt="Shop"></figure>
-      <figure><img src="images/shop-1.jpg" alt="Shop"></figure>
-      <figure><img src="images/shop-3.jpg" alt="Shop"></figure>
-      <figure><img src="images/shop-2.jpg" alt="Shop"></figure>
+      <figure><img src="shop-1.jpg" alt="Shop"><figcaption>Storage & Seating</figcaption></figure>
+      <figure><img src="shop-2.jpg" alt="Shop"><figcaption>Main Aisle</figcaption></figure>
+      <figure><img src="shop-3.jpg" alt="Shop"><figcaption>Gas & Hardware</figcaption></figure>
+      <figure><img src="shop-1.jpg" alt="Shop"><figcaption>Products</figcaption></figure>
     </div>
   </div>
 </section>
 
+<div class="weave"></div>
+
 <section class="contact">
   <h2>Get in touch</h2>
-  <div style="margin-top:20px;">
-    <a class="contact-pill" href="tel:+916392694227">📞 Call: 6392694227</a>
-    <a class="contact-pill" href="https://wa.me/916392694227" target="_blank">💬 WhatsApp</a>
-    <a class="contact-pill" href="mailto:kumarguptashiv349@gmail.com">✉️ Email</a>
-  </div>
+  <p style="margin:15px 0 25px;">Questions about stock or bulk orders</p>
+  <!-- ALL 3 FIXED -->
+  <a class="contact-pill" href="tel:+916392694227">📞 Call: 6392694227</a>
+  <a class="contact-pill" href="https://wa.me/916392694227?text=Hello%20Bhole%20Bardana%20Shop" target="_blank">💬 WhatsApp</a>
+  <a class="contact-pill" href="mailto:kumarguptashiv349@gmail.com?subject=Enquiry%20from%20Website">✉️ Email</a>
 </section>
 
 <footer>
-  <div>Bhole Bardana Shop · Main Market, Yaqut Ganj, Farrukhabad, UP 209625</div>
+  <div>Bhole Bardana Shop · Main Market, Yaqut Ganj, Farrukhabad, UP 209625 · 📞 6392694227</div>
+  <div>भोले बर्दाना शॉप</div>
 </footer>
 
 </body>
-    </html>
+</html>
