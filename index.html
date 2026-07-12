@@ -911,31 +911,31 @@ window.addEventListener('load',()=>setTimeout(resize,800));
 <!-- Ambient Shop Sound -->
 <audio id="bgmusic" loop preload="auto">
   <source src="Shop-bg.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
 
 <!-- Sound Control Button -->
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: Arial;">
+<div style="position: fixed; bottom: 80px; right: 15px; z-index: 9999;">
   <button id="soundBtn" onclick="toggleSound()" 
-  style="padding:10px 16px; border:none; border-radius:25px; background:#8B4513; color:white; font-size:14px; cursor:pointer; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
-    🔊 Sound On
+  style="padding:10px 14px; border:none; border-radius:25px; background:#8B4513; color:white; font-size:14px; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+    🔊 Play Sound
   </button>
 </div>
 
 <script>
-  var bgmusic = document.getElementById("bgmusic");
-  var btn = document.getElementById("soundBtn");
-  var isPlaying = false;
+  const bgmusic = document.getElementById("bgmusic");
+  const btn = document.getElementById("soundBtn");
+  let isPlaying = false;
+  
   function toggleSound() {
     if (isPlaying) {
       bgmusic.pause();
-      btn.innerHTML = "🔇 Sound Off";
-      btn.style.background = "#555";
+      btn.innerHTML = "🔊 Play Sound";
+      btn.style.background = "#8B4513";
       isPlaying = false;
     } else {
       bgmusic.play();
-      btn.innerHTML = "🔊 Sound On";
-      btn.style.background = "#8B4513";
+      btn.innerHTML = "🔇 Pause Sound";
+      btn.style.background = "#555";
       isPlaying = true;
     }
   }
