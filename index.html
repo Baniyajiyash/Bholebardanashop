@@ -908,5 +908,37 @@ function drawParticles(){
 drawParticles();
 window.addEventListener('load',()=>setTimeout(resize,800));
 </script>
+<!-- Ambient Shop Sound -->
+<audio id="bgmusic" loop preload="auto">
+  <source src="Shop-bg.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<!-- Sound Control Button -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: Arial;">
+  <button id="soundBtn" onclick="toggleSound()" 
+  style="padding:10px 16px; border:none; border-radius:25px; background:#8B4513; color:white; font-size:14px; cursor:pointer; box-shadow:0 4px 8px rgba(0,0,0,0.2);">
+    🔊 Sound On
+  </button>
+</div>
+
+<script>
+  var bgmusic = document.getElementById("bgmusic");
+  var btn = document.getElementById("soundBtn");
+  var isPlaying = false;
+  function toggleSound() {
+    if (isPlaying) {
+      bgmusic.pause();
+      btn.innerHTML = "🔇 Sound Off";
+      btn.style.background = "#555";
+      isPlaying = false;
+    } else {
+      bgmusic.play();
+      btn.innerHTML = "🔊 Sound On";
+      btn.style.background = "#8B4513";
+      isPlaying = true;
+    }
+  }
+</script>
 </body>
 </html>
